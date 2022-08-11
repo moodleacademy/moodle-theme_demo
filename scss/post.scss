@@ -14,13 +14,18 @@ body {
 
 .navbar-light {
   background-color: $brand-corporate;
-  border-bottom: 1px solid $brand-darkest;
+  border-bottom: 1px solid $brand-darkest !important;
 
-  .usermenu {
-     background-color: $gray-100;
+  #user-menu-toggle {
+    background-color: $gray-100;
 	  border: 1px solid $brand-darkest;
-	  padding: 3px 5px;
+	  //padding: 3px 5px;
 	  border-radius: 2rem;
+    box-shadow: none;
+
+    &::before {
+      display: none;
+    }
   }
 
   .dropdown-item .icon {
