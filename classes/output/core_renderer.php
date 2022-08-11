@@ -26,6 +26,8 @@ namespace theme_demo\output;
 
 use html_writer;
 use moodle_url;
+use theme_boost\output\core_renderer as core_renderer_base;
+
 
 
 defined('MOODLE_INTERNAL') || die;
@@ -39,14 +41,14 @@ require_once($CFG->dirroot . '/theme/demo/locallib.php');
  * @copyright  2017 Rajneel Totaram
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class core_renderer extends \core_renderer {
+class core_renderer extends core_renderer_base {
 
 
     /**
      * This renders the navbar.
      * Uses bootstrap compatible html.
      */
-    public function navbar() {
+    public function navbar(): string {
 
         global $CFG;
 
@@ -96,7 +98,10 @@ class core_renderer extends \core_renderer {
         //return $this->render_from_template('core/navbar', $this->page->navbar);
     }
 
-    public function edit_button(moodle_url $url) {
+    public function edit_button(moodle_url $url, string $method = 'post') {
+        if ($this->page->theme->haseditswitch == true) {
+            return;
+        }
 
         $url->param('sesskey', sesskey());
         if ($this->page->user_is_editing()) {
