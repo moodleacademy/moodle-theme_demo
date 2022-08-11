@@ -65,6 +65,9 @@ $THEME->scss = function($theme) {
     return theme_demo_get_main_scss_content($theme);
 };
 
+$THEME->haseditswitch = true;
+$THEME->usescourseindex = true;
+
 $THEME->layouts = [
     // Main course page.
     'course' => array(
