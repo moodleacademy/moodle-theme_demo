@@ -67,6 +67,9 @@ $THEME->scss = function($theme) {
 
 $THEME->haseditswitch = true;
 $THEME->usescourseindex = true;
+$THEME->activityheaderconfig = [
+    'notitle' => true
+];
 
 $THEME->layouts = [
     // Main course page.
