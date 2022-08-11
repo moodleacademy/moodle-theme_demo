@@ -43,61 +43,6 @@ require_once($CFG->dirroot . '/theme/demo/locallib.php');
  */
 class core_renderer extends core_renderer_base {
 
-
-    /**
-     * This renders the navbar.
-     * Uses bootstrap compatible html.
-     */
-    public function navbar(): string {
-
-        global $CFG;
-
-        $items = $this->page->navbar->get_items();
-        $itemcount = count($items);
-        if ($itemcount === 0) {
-            return '';
-        }
-
-        unset($items[0]); // Remove first item.
-
-        // Add Home icon as first item.
-        $breadcrumbs = '<li class="breadcrumb-item">'
-            . '<a href="' . $CFG->wwwroot . '/my/" title="' . get_string('home') . '">'
-            . '<i class="fa fa-home fa-lg" id="homeicon"></i>'
-            . '</a>'
-            . '</li>';
-
-        // Go over all items.
-        foreach ($items as $item)
-		{
-			if ($item->type == "0" || $item->type == "30" /*|| $item->type == "60"*/)
-			{
-                continue;
-            }
-
-            $item->hideicon = true;
-			$item->title = $item->text; // Put text here, in case it may be trimmed.
-
-			// Trim long items so that they don't spill over.
-			if(strlen($item->text) > 25)
-			{
-				$item->text = substr($item->text, 0, 20) . "...";
-			}
-
-            $breadcrumbs .= '<li class="breadcrumb-item">' . $this->render($item) . '</li>';
-        }
-
-        $navbarcontent = html_writer::start_tag('nav',
-            array('aria-label' => get_string('breadcrumb', 'access'),
-                'role' => 'navigation'))
-			. html_writer::tag('ol', "$breadcrumbs", array('class' => 'breadcrumb'))
-			. html_writer::end_tag('nav');
-
-        return $navbarcontent;
-
-        //return $this->render_from_template('core/navbar', $this->page->navbar);
-    }
-
     public function edit_button(moodle_url $url, string $method = 'post') {
         if ($this->page->theme->haseditswitch == true) {
             return;
