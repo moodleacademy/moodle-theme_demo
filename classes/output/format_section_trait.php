@@ -35,20 +35,23 @@ use completion_info;
 use stdClass;
 
 trait format_section_trait {
+
+    public function render_content( $modchooser) {
+        global $COURSE;
+
+        $this->print_multiple_section_page($COURSE);
+   }
+
 	/**
      * Output the html for a multiple section page
      *
      * @param stdClass $course The course entry from DB
-     * @param array $sections (argument not used)
-     * @param array $mods (argument not used)
-     * @param array $modnames (argument not used)
-     * @param array $modnamesused (argument not used)
      */
-    public function print_multiple_section_page($course, $sections, $mods, $modnames, $modnamesused) {
+    public function print_multiple_section_page($course) {
         global $PAGE;
 
         // Add Extra message here.
-        echo theme_demo_extra_message($course);
+        echo theme_demo_extra_message();
 
         $modinfo = get_fast_modinfo($course);
         $course = course_get_format($course)->get_course();
@@ -123,7 +126,5 @@ trait format_section_trait {
         } else {
             echo $this->end_section_list();
         }
-
     }
-
 }

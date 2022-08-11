@@ -24,9 +24,9 @@
 
 namespace theme_demo\output;
 
-defined('MOODLE_INTERNAL') || die();
+use core_courseformat\output\section_renderer;
 
-class format_weeks_renderer extends \format_weeks\output\renderer {
+class format_weeks_renderer extends section_renderer {
 
     use format_section_trait;
 }

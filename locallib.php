@@ -25,7 +25,7 @@
  /**
  * Display some extra message.
  */
-function theme_demo_extra_message($course) {
+function theme_demo_extra_message() {
     echo html_writer::start_tag('div', array('class' => 'card text-white bg-primary'));
     echo html_writer::start_tag('div', array('class' => 'card-body'));
     echo html_writer::start_tag('h5', array('class' => 'card-title'));
