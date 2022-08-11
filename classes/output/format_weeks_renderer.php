@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Renderer for outputting the topics course format.
+ * Renderer for outputting the weeks course format.
  *
  * @package    theme_demo
  * @copyright  2018 Rajneel Totaram
@@ -26,7 +26,7 @@ namespace theme_demo\output;
 
 defined('MOODLE_INTERNAL') || die();
 
-class format_weeks_renderer extends \format_weeks_renderer {
+class format_weeks_renderer extends \format_weeks\output\renderer {
 
     use format_section_trait;
 }
