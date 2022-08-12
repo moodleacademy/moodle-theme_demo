@@ -24,9 +24,7 @@
 
 namespace theme_demo\output;
 
-use core_courseformat\output\section_renderer;
-
-class format_weeks_renderer extends section_renderer {
+class format_weeks_renderer extends \format_weeks\output\renderer {
 
     use format_section_trait;
 }
